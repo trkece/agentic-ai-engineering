@@ -219,19 +219,40 @@ def run_agent(user_question: str) -> str:
     )
 
 
-def main() -> None:
-    print("Customer Support Investigation Agent (local educational demo)")
-    print("Try: 'Investigate customer C-1001 and explain the pending transaction.'")
-    print("Type 'exit' to quit.\n")
+def read_multiline_question() -> str | None:
+    """Read a complete request until END; return None when the user exits."""
+    print("Paste your request. Type END on a line by itself to submit.")
+    print("Type EXIT on the first line to quit.")
 
+    lines: list[str] = []
     while True:
         try:
-            question = input("You: ").strip()
-        except (EOFError, KeyboardInterrupt):
-            print("\nGoodbye.")
-            break
+            line = input("> ")
+        except EOFError:
+            # Treat Ctrl-D as submission when text has been entered.
+            return "\n".join(lines).strip() if lines else None
+        except KeyboardInterrupt:
+            print("\nInput cancelled.")
+            return ""
 
-        if question.lower() in {"exit", "quit"}:
+        command = line.strip().upper()
+        if command == "END":
+            return "\n".join(lines).strip()
+        if command in {"EXIT", "QUIT"} and not lines:
+            return None
+
+        lines.append(line)
+
+
+def main() -> None:
+    print("Customer Support Investigation Agent (local educational demo)")
+    print("Try investigating customer C-1001 and its pending transaction.")
+    print("Multi-line input is supported; submit each request with END.\n")
+
+    while True:
+        question = read_multiline_question()
+
+        if question is None:
             print("Goodbye.")
             break
         if not question:
