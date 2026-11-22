@@ -187,7 +187,7 @@ def run_agent(user_question: str) -> str:
     ]
 
     for turn in range(1, MAX_MODEL_TURNS + 1):
-        response = chat(model=MODEL, messages=messages, tools=TOOLS)
+        response = chat(model=MODEL, messages=messages, tools=TOOLS, think=True)
         assistant_message = response.message
         messages.append(assistant_message)
 
