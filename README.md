@@ -36,6 +36,19 @@ python 01-agent-fundamentals/customer_support_agent.py
 
 The example uses fictional, in-memory records and read-only tools. It does not connect to a real CRM, payment platform, or customer database. Model behavior and tool selection can vary between runs.
 
+### Entering multi-line prompts
+
+The CLI accepts multi-line requests. Paste your full prompt, then type `END` on a separate line to submit it. Type `EXIT` or `QUIT` on the first line to close the application. For example:
+
+```text
+> Investigate customer C-1001.
+> Retrieve customer details and transaction history.
+> Explain pending transactions and the refund policy.
+> Do not initiate a refund.
+> END
+```
+
+
 ## Design principles
 
 - Make autonomy explicit and bounded.
