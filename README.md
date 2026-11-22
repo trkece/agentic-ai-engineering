@@ -19,8 +19,9 @@ The material is intended for AI/ML engineers, software engineers, data scientist
 ## Start here
 
 1. Read [Part 1 — Agent Fundamentals](articles/01-agent-fundamentals.md).
-2. Run the [customer-support agent example](01-agent-fundamentals/).
-3. Work through the [exercises](01-agent-fundamentals/exercises.md).
+2. Follow the [practical companion: Build Your First Local AI Agent](articles/01-local-agent-hands-on.md).
+3. Run the [customer-support agent example](01-agent-fundamentals/).
+4. Work through the [exercises](01-agent-fundamentals/exercises.md).
 
 ## Quick start
 
